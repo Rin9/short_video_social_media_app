@@ -8,6 +8,8 @@ export const createOrGetUser = async (response: any, addUser: any) => {
     response.credential
   );
 
+  console.log("fired");
+
   const { name, picture, sub } = decoded;
 
   const user = {
@@ -20,7 +22,7 @@ export const createOrGetUser = async (response: any, addUser: any) => {
   //add user in zustand
   addUser(user);
 
-  await axios.post(`http://localhost:3000/api/auth`, user);
+  await axios.post(`${BASE_URL}/api/auth`, user);
 
   // var base64Url = response.credential.split(".")[1];
   // var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
